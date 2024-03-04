@@ -1,12 +1,11 @@
 package com.fiap.tech.Gateway.utils;
 
-import com.fiap.tech.Gateway.dtos.ProductListResponseDTO;
-import com.fiap.tech.Gateway.dtos.ProductResponseDTO;
-import com.fiap.tech.Gateway.dtos.StockResponseDTO;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
-
+import com.fiap.tech.Gateway.dtos.StockResponseDTO;
+import com.fiap.tech.Gateway.dtos.ProductResponseDTO;
+import com.fiap.tech.Gateway.dtos.ProductListResponseDTO;
 import java.math.BigDecimal;
 
 @Component

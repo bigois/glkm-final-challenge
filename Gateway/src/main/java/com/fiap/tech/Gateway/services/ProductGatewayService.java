@@ -1,16 +1,14 @@
 package com.fiap.tech.Gateway.services;
 
-import com.fiap.tech.Gateway.dtos.ProductListResponseDTO;
-import com.fiap.tech.Gateway.dtos.ProductResponseDTO;
-import com.fiap.tech.Gateway.dtos.StockResponseDTO;
 import com.fiap.tech.Gateway.utils.ProductUtil;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-
+import com.fiap.tech.Gateway.dtos.ProductListResponseDTO;
 import java.math.BigDecimal;
-
+import com.fiap.tech.Gateway.dtos.ProductResponseDTO;
+import com.fiap.tech.Gateway.dtos.StockResponseDTO;
 @Service
 public class ProductGatewayService {
     private ProductUtil productUtil;

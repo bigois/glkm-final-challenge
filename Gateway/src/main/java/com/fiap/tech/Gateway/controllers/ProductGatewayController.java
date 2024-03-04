@@ -1,25 +1,13 @@
 package com.fiap.tech.Gateway.controllers;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import com.fiap.tech.Gateway.dtos.ProductListResponseDTO;
-import com.fiap.tech.Gateway.dtos.ProductResponseDTO;
-import com.fiap.tech.Gateway.dtos.StockResponseDTO;
 import com.fiap.tech.Gateway.services.ProductGatewayService;
-import org.json.JSONException;
-import org.json.JSONObject;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Flux;
-import reactor.core.publisher.Mono;
 
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
+import com.fiap.tech.Gateway.dtos.ProductListResponseDTO;
 
 @RestController
 @RequestMapping("/api/v1/products")
