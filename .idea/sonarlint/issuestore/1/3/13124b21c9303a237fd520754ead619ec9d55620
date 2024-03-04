@@ -1,0 +1,6 @@
+
+v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(É‚Îò8Ã†¶ß1
+\
+java:S1118	":Add a private constructor to hide the implicit public one.(Ìôğûÿÿÿÿ8È†¶ß1
+a
+java:S1128"ERemove this unused import 'com.fiap.tech.Stock.dtos.StockRequestDTO'.(Ïˆû=8ƒƒÜ»ß1

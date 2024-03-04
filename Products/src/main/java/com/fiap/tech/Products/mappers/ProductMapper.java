@@ -7,7 +7,6 @@ import com.fiap.tech.Products.entities.Product;
 public abstract class ProductMapper {
 
     public static Product productDTOtoProduct(ProductRequestDTO productRequestDTO){
-
         Product product = new Product();
 
         product.setName(productRequestDTO.name());
@@ -15,8 +14,7 @@ public abstract class ProductMapper {
         product.setBrand(productRequestDTO.brand());
 
         return product;
-
-    };
+    }
 
     public static ProductResponseDTO productToProductDTO(Product product){
         return new ProductResponseDTO(product.getId(), product.getName(), product.getPrice(), product.getBrand());
