@@ -37,7 +37,7 @@ public class StockController {
         stockService.addQuantityStock(id, quantity);
 
         JSONObject responseBody = new JSONObject();
-        responseBody.put("message", "quantity successfull added");
+        responseBody.put("message", "quantity successfully added");
         return ResponseEntity.status(HttpStatus.OK).body(responseBody.toString());
     }
 
@@ -46,7 +46,7 @@ public class StockController {
         stockService.removeQuantityStock(id, quantity);
 
         JSONObject responseBody = new JSONObject();
-        responseBody.put("message", "quantity successfull removed");
+        responseBody.put("message", "quantity successfully removed");
         return ResponseEntity.status(HttpStatus.OK).body(responseBody.toString());
     }
 }

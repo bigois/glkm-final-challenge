@@ -1,6 +1,5 @@
 package com.fiap.tech.Cart.entities;
 
-import com.fiap.tech.Cart.dtos.ProductsListDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -21,7 +20,9 @@ public class Cart {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
+    @Column(nullable = false)
     private UUID id_user;
 
+    @Column(nullable = false)
     private BigDecimal total;
 }
