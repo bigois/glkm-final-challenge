@@ -107,3 +107,7 @@ x
 HGateway/src/test/java/com/fiap/tech/Gateway/GatewayApplicationTests.java,e\b\eb07a8f6bb6f44ba8fa1e38a75870467b449d509
 Å
 Q.idea/sonarlint/securityhotspotstore/8/4/84f2f935b3cf6d030d4296ba2b9fafed565a91fb,7\1\7196e56a42523c65660a40788404466be52af5a7
+¶
+vAuthenticate/src/main/java/br/com/fiap/techchallenge5authenticatelogin/TechChallenge5AuthenticateLoginApplication.java,c\6\c69baedd9adcdfa11f0a7578702c712b2b9befeb
+j
+:Cart/src/main/java/com/fiap/tech/Cart/CartApplication.java,f\9\f9199549127c9cea40cb90ac243f2632ddb57e59

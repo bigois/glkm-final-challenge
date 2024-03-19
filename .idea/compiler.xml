@@ -7,8 +7,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="Stock" />
         <module name="Products" />
+        <module name="Stock" />
+        <module name="Gateway" />
+        <module name="tech-challenge-5-authenticate-login" />
+        <module name="payment-api" />
         <module name="Cart" />
       </profile>
     </annotationProcessing>
@@ -16,8 +19,11 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="Cart" options="-parameters" />
+      <module name="Gateway" options="-parameters" />
       <module name="Products" options="-parameters" />
       <module name="Stock" options="-parameters" />
+      <module name="payment-api" options="-parameters" />
+      <module name="tech-challenge-5-authenticate-login" options="-parameters" />
     </option>
   </component>
 </project>
