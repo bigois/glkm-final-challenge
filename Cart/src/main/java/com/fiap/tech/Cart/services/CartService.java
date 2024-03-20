@@ -17,7 +17,7 @@ public class CartService {
     private CartRepository cartRepository;
 
     @Transactional(readOnly = true)
-    public List<Cart> getCarts(){ return cartRepository.findAll();}
+    public List<Cart> getCarts(){return cartRepository.findAll();}
     @Transactional
     public Cart createCart(CartRequestDTO cartRequestDTO){
         return cartRepository.save(CartMapper.cartDTOtoCart(cartRequestDTO));

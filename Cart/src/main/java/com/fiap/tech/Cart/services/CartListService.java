@@ -1,6 +1,5 @@
 package com.fiap.tech.Cart.services;
 
-import com.fiap.tech.Cart.entities.Cart;
 import com.fiap.tech.Cart.entities.CartList;
 import com.fiap.tech.Cart.mappers.CartListMapper;
 import com.fiap.tech.Cart.repositories.CartListRepository;
@@ -9,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -21,6 +20,11 @@ public class CartListService {
     @Transactional(readOnly = true)
     public CartList getByCartId(UUID id){
         return cartListRepository.findByIdCart(id);
+    }
+
+    @Transactional(readOnly = true)
+    public List<CartList> getAllByCartId(UUID id){
+        return cartListRepository.findAllByIdCart(id);
     }
 
     @Transactional
@@ -41,6 +45,7 @@ public class CartListService {
         if(!cartList){
             throw new RuntimeException("cart not exists");
         }
+
         if(cartListRepository.existsByIdProduct(idProduct)) throw new RuntimeException("product already exists in Cart List");
 
         if(quantity <= 0) throw new RuntimeException("quantity must be more than 0");
@@ -59,12 +64,11 @@ public class CartListService {
     public void removeItemCartList(UUID idCart, UUID idProduct){
         CartList cartList = cartListRepository.findByIdCartAndIdProduct(idCart, idProduct);
 
-
         if(cartList == null) {
             throw new RuntimeException("cart not exists");
         }
-        if(!cartListRepository.existsByIdProduct(idProduct)) throw new RuntimeException("product not exists in this cart");
 
+        if(!cartListRepository.existsByIdProduct(idProduct)) throw new RuntimeException("product not exists in this cart");
 
         cartListRepository.deleteByIdCartAndIdProduct(idCart, idProduct);
     }

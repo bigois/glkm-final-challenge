@@ -15,6 +15,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping(path = "/products", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -29,10 +30,15 @@ public class ProductController {
     }
 
     @GetMapping
-    public ResponseEntity< List<Product>> getProducts(){
+    public ResponseEntity<List<Product>> getProducts(){
         List<Product> listProducts = productService.getProducts();
 
         return ResponseEntity.status(HttpStatus.OK).body(listProducts);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Product> getProductById(@PathVariable UUID id){
+        return ResponseEntity.status(HttpStatus.OK).body(productService.getProductById(id));
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)

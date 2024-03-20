@@ -23,9 +23,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("auth")
 @Slf4j
 public class AuthenticationController {
-
     private static final Logger logger = LoggerFactory.getLogger(AuthenticationController.class);
-
 
     @Autowired
     private AuthenticationManager authenticationManager;

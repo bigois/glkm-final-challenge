@@ -31,10 +31,16 @@ public class CartListController {
         return ResponseEntity.status(HttpStatus.OK).body(cartList);
     }
 
+    @GetMapping("/all-items/{id}")
+    public ResponseEntity<List<CartList>>getAllCartListById(@PathVariable UUID id) {
+        List<CartList> cartList = cartListService.getAllByCartId(id);
+
+        return ResponseEntity.status(HttpStatus.OK).body(cartList);
+    }
+
     @PostMapping("/{idCart}")
     public ResponseEntity<CartList> createCartList(@PathVariable UUID idCart, @RequestParam UUID idProduct, @RequestParam BigDecimal price, @RequestParam int quantity){
         CartList cartList = cartListService.createCartList(idCart,idProduct,price,quantity);
-
         return ResponseEntity.status(HttpStatus.CREATED).body(cartList);
     }
 

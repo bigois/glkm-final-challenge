@@ -1,3 +1,11 @@
 
-o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(®ºÀ¨
-Q	java:S125"<This block of commented-out lines of code should be removed.(„°ô£
+v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(®ºÀ¨8¸žõÉå1
+X	java:S125."<This block of commented-out lines of code should be removed.(Üûèä8ÕžõÉå1
+n
+java:S1128"LRemove this unused import 'com.fiap.tech.Gateway.dtos.CartCreateRequestDTO'.(•»Õßüÿÿÿÿ8©„óËå1
+o
+java:S1128"MRemove this unused import 'com.fiap.tech.Gateway.dtos.CartCreateResponseDTO'.(Ñ‘íþûÿÿÿÿ8ª„óËå1
+W
+java:S1128"5Remove this unused import 'jakarta.validation.Valid'.(ÀãÅ”ûÿÿÿÿ8ª„óËå1
+S
+java:S1068"6Remove this unused "cartGatewayService" private field.(ó¼‡8­£ùÉå1

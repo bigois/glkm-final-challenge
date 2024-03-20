@@ -29,7 +29,6 @@ public class CartList {
     @JdbcTypeCode(SqlTypes.VARCHAR)
     private UUID idCart;
 
-
     @Column(nullable = false, columnDefinition = "varchar(36)", unique = true)
     @JdbcTypeCode(SqlTypes.VARCHAR)
     private UUID idProduct;

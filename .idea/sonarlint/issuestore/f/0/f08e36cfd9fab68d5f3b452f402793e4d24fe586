@@ -1,5 +1,3 @@
 
 {	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Ëå‚Ôÿÿÿÿÿ8…Ù–‡Ş1
 s	java:S116"RRename this field "id_user" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(®îÊüÿÿÿÿ8†È‡Ş1
-a
-java:S1128"DRemove this unused import 'com.fiap.tech.Cart.dtos.ProductsListDTO'.(«ûë¢8ïœ«‰Ş1

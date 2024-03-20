@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Page;
 
+import java.util.List;
 import java.util.UUID;
 
 public interface CartListRepository extends JpaRepository<CartList, UUID> {
@@ -20,5 +21,5 @@ public interface CartListRepository extends JpaRepository<CartList, UUID> {
     CartList findByIdCartAndIdProduct(UUID idCart, UUID idProduct);
 
 
-    void findAllByIdCart(UUID idCart);
+    List<CartList> findAllByIdCart(UUID idCart);
 }
