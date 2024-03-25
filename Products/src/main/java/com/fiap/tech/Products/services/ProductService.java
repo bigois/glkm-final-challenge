@@ -1,5 +1,6 @@
 package com.fiap.tech.Products.services;
 
+import com.fiap.tech.Products.dtos.PriceUpdateRequestDTO;
 import com.fiap.tech.Products.dtos.ProductRequestDTO;
 import com.fiap.tech.Products.entities.Product;
 import com.fiap.tech.Products.mappers.ProductMapper;
@@ -9,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.UUID;
 
@@ -31,5 +33,28 @@ public class ProductService {
     @Transactional
     public Product createProduct(ProductRequestDTO productRequestDTO){
         return productRepository.save(ProductMapper.productDTOtoProduct(productRequestDTO));
+    }
+
+    @Transactional
+    public void removeProduct(UUID id){
+        Product product = productRepository.findProductById(id);
+
+        if(product == null){
+            throw new EntityNotFoundException("product not exists");
+        }
+
+        productRepository.deleteById(id);
+    }
+
+    @Transactional
+    public Product updatePrice(UUID id, PriceUpdateRequestDTO priceUpdateRequestDTO){
+        Product product = productRepository.findProductById(id);
+        if(product == null) {
+            throw new RuntimeException("product not exists");
+        }
+
+        product.setPrice(priceUpdateRequestDTO.price());
+
+        return productRepository.save(product);
     }
 }

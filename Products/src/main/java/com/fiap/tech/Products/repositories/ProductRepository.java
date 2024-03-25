@@ -9,4 +9,8 @@ import java.util.UUID;
 
 public interface ProductRepository extends JpaRepository<Product, UUID> {
     Page<Product> findAll(Pageable pageable);
+    
+    void deleteById (UUID id);
+
+    Product findProductById(UUID id);
 }

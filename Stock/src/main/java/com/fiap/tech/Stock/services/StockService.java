@@ -3,6 +3,7 @@ package com.fiap.tech.Stock.services;
 import com.fiap.tech.Stock.entities.Stock;
 import com.fiap.tech.Stock.mappers.StockMapper;
 import com.fiap.tech.Stock.repositories.StockRepository;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -56,5 +57,16 @@ public class StockService {
         stock.setUpdatedAt(LocalDateTime.now());
 
         return stockRepository.save(stock);
+    }
+
+    @Transactional
+    public void removeStock(UUID id){
+        Stock stock = stockRepository.findByIdProduct(id);
+
+        if(stock == null){
+            throw new EntityNotFoundException("stock not exists");
+        }
+
+        stockRepository.deleteByIdProduct(id);
     }
 }

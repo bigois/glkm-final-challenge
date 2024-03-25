@@ -9,4 +9,6 @@ public interface StockRepository extends JpaRepository<Stock, UUID> {
     Stock findByIdProduct(UUID id);
 
     boolean existsByIdProduct(UUID id);
+
+    void deleteByIdProduct (UUID id);
 }

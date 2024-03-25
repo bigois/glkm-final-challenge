@@ -2,6 +2,7 @@ package com.fiap.tech.Stock.controllers;
 
 import com.fiap.tech.Stock.entities.Stock;
 import com.fiap.tech.Stock.services.StockService;
+import jakarta.validation.Valid;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,6 +48,15 @@ public class StockController {
 
         JSONObject responseBody = new JSONObject();
         responseBody.put("message", "quantity successfully removed");
+        return ResponseEntity.status(HttpStatus.OK).body(responseBody.toString());
+    }
+
+    @DeleteMapping("/remove-stock/{id}")
+    public ResponseEntity<String> removeStock(@PathVariable UUID id) throws JSONException {
+        stockService.removeStock(id);
+
+        JSONObject responseBody = new JSONObject();
+        responseBody.put("message", "stock successfully removed");
         return ResponseEntity.status(HttpStatus.OK).body(responseBody.toString());
     }
 }
