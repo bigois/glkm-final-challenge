@@ -1,0 +1,7 @@
+
+b	java:S112<"FDefine and throw a dedicated exception instead of using a generic one.(çËà«8îÜ½‘ç1
+E
+java:S5411"(Use a primitive boolean expression here.(˜ƒ‘®8äõöÂæ1
+V	java:S125 "<This block of commented-out lines of code should be removed.(ûŒÂ¶ÿÿÿÿÿ
+f
+java:S1128"DRemove this unused import 'org.springframework.http.ResponseEntity'.(¶¯ø¦úÿÿÿÿ8Ôã½ç1

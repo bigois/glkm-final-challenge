@@ -1,0 +1,1 @@
+INSERT IGNORE INTO accounts (id, agency, account_number, account_type, banco, account_owner_name, balance, blocked_balance, account_owner_id) VALUES (1, '1', '123321-4', 'Saving account', 'Itaú Unibanco S.A', 'Fiap', 1000.0, 0.0, 1);

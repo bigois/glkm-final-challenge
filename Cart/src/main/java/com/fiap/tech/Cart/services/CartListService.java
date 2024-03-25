@@ -3,6 +3,7 @@ package com.fiap.tech.Cart.services;
 import com.fiap.tech.Cart.entities.CartList;
 import com.fiap.tech.Cart.mappers.CartListMapper;
 import com.fiap.tech.Cart.repositories.CartListRepository;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -97,8 +98,15 @@ public class CartListService {
         return cartListRepository.save(cartList);
     }
 
-  /*  public void calculateTotalPrice(UUID idCart){
-        cartListRepository.findAllByIdCart(idCart);
-    }*/
+    @Transactional
+    public void removeAllItemsCartList(UUID idCart){
+        List<CartList> cartList = cartListRepository.findAllByIdCart(idCart);
+
+        if(cartList == null) {
+            throw new EntityNotFoundException("cart not exists");
+        }
+
+        cartListRepository.deleteAllByIdCart(idCart);
+    }
 }
 

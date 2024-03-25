@@ -7,9 +7,9 @@ import org.springframework.http.ResponseEntity;
 
 public interface AccountInput {
 
-    ResponseEntity<?> create(AccountRequest request);
+    Account create(AccountRequest request);
 
-    ResponseEntity<?> findByAccount(String account);
+    Account findByAccount(String account);
 
     Account findByAccountAndAgency(String account, String agency);
 

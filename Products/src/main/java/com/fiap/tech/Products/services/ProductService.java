@@ -32,5 +32,4 @@ public class ProductService {
     public Product createProduct(ProductRequestDTO productRequestDTO){
         return productRepository.save(ProductMapper.productDTOtoProduct(productRequestDTO));
     }
-
 }

@@ -23,11 +23,8 @@ public class ProductGatewayController {
 
     private final ProductGatewayService productGatewayService;
 
-    private final CartGatewayService cartGatewayService;
-
-    public ProductGatewayController(ProductGatewayService productGatewayService, CartGatewayService cartGatewayService) {
+    public ProductGatewayController(ProductGatewayService productGatewayService) {
         this.productGatewayService = productGatewayService;
-        this.cartGatewayService = cartGatewayService;
     }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)

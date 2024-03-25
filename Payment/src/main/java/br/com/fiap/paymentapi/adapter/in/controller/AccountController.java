@@ -1,5 +1,6 @@
 package br.com.fiap.paymentapi.adapter.in.controller;
 
+import br.com.fiap.paymentapi.domain.model.Account;
 import br.com.fiap.paymentapi.domain.service.AccountService;
 import br.com.fiap.paymentapi.infrastructure.dto.request.AccountMovimentRequest;
 import br.com.fiap.paymentapi.infrastructure.dto.request.AccountRequest;
@@ -9,23 +10,20 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/v1/accounts")
+@RequestMapping("/accounts")
 public class AccountController {
 
     private final AccountService service;
 
     @PostMapping()
     public ResponseEntity<?> create(@RequestBody AccountRequest request){
-
-        ResponseEntity<?> responseEntity = service.create(request);
-        return ResponseEntity.ok().body(responseEntity);
+        Account account = service.create(request);
+        return ResponseEntity.ok().body(account);
     }
 
     @GetMapping("/{accountNumber}")
     public ResponseEntity<?> findByAccount(@PathVariable String accountNumber){
-        ResponseEntity<?> byAccount = service.findByAccount(accountNumber);
-        return ResponseEntity.ok().body(byAccount);
-
+        return ResponseEntity.ok().body(service.findByAccount(accountNumber));
     }
 
     @PostMapping("/deposit")

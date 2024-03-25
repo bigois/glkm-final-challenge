@@ -1,8 +1,6 @@
 
+j
+java:S11921"HDefine a constant instead of duplicating this literal "message" 3 times.(ãâ˜àúÿÿÿÿ8ØèÛç1
 o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Ê…×¾
 X
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ
-‘
-java:S1130B"oRemove the declaration of thrown exception 'org.json.JSONException', as it cannot be thrown from method's body.(±¸½öüÿÿÿÿ8“ÒËå1
-‘
-java:S1130I"oRemove the declaration of thrown exception 'org.json.JSONException', as it cannot be thrown from method's body.(®¬ğÊûÿÿÿÿ8“ÒËå1
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ

@@ -1,10 +1,7 @@
 package com.fiap.tech.Cart.controllers;
 
-
-import com.fiap.tech.Cart.dtos.CartListRequestDTO;
 import com.fiap.tech.Cart.entities.CartList;
 import com.fiap.tech.Cart.services.CartListService;
-import jakarta.validation.Valid;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,6 +50,20 @@ public class CartListController {
         return ResponseEntity.status(HttpStatus.OK).body(cartList);
     }
 
+    @PutMapping("/add-quantity-item/{idCart}")
+    public ResponseEntity<CartList> addQuantityItem(@PathVariable UUID idCart, @RequestParam UUID idProduct, @RequestParam String quantity){
+        CartList cartList = cartListService.addQuantityItem(idCart, idProduct, quantity);
+
+        return ResponseEntity.status(HttpStatus.OK).body(cartList);
+    }
+
+    @PutMapping("/remove-quantity-item/{idCart}")
+    public ResponseEntity<CartList> removeQuantityItem(@PathVariable UUID idCart, @RequestParam UUID idProduct, @RequestParam String quantity){
+        CartList cartList = cartListService.removeQuantityItem(idCart, idProduct, quantity);
+
+        return ResponseEntity.status(HttpStatus.OK).body(cartList);
+    }
+
     @DeleteMapping("/remove-cartList-item/{idCart}")
     public ResponseEntity<String> removeItemCartList(@PathVariable UUID idCart, @RequestParam UUID idProduct) throws JSONException {
         cartListService.removeItemCartList(idCart, idProduct);
@@ -62,18 +73,12 @@ public class CartListController {
         return ResponseEntity.status(HttpStatus.OK).body(responseBody.toString());
     }
 
-    @PutMapping("/add-quantity-item/{idCart}")
-    public ResponseEntity<CartList> addQuantityItem(@PathVariable UUID idCart, @RequestParam UUID idProduct, @RequestParam String quantity) throws JSONException {
-        CartList cartList = cartListService.addQuantityItem(idCart, idProduct, quantity);
+    @DeleteMapping("/remove-cartList-all-item/{idCart}")
+    public ResponseEntity<String> removeAllItemsCartList(@PathVariable UUID idCart) throws JSONException {
+        cartListService.removeAllItemsCartList(idCart);
 
-        return ResponseEntity.status(HttpStatus.OK).body(cartList);
+        JSONObject responseBody = new JSONObject();
+        responseBody.put("message", "Items successfully removed");
+        return ResponseEntity.status(HttpStatus.OK).body(responseBody.toString());
     }
-
-    @PutMapping("/remove-quantity-item/{idCart}")
-    public ResponseEntity<CartList> removeQuantityItem(@PathVariable UUID idCart, @RequestParam UUID idProduct, @RequestParam String quantity) throws JSONException {
-        CartList cartList = cartListService.removeQuantityItem(idCart, idProduct, quantity);
-
-        return ResponseEntity.status(HttpStatus.OK).body(cartList);
-    }
-
 }

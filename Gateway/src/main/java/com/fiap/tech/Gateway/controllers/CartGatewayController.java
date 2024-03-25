@@ -5,10 +5,7 @@ import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.auth0.jwt.interfaces.DecodedJWT;
-import com.fiap.tech.Gateway.dtos.CartAddRequestDTO;
-import com.fiap.tech.Gateway.dtos.CartAddResponseDTO;
-import com.fiap.tech.Gateway.dtos.CartCreateRequestDTO;
-import com.fiap.tech.Gateway.dtos.CartCreateResponseDTO;
+import com.fiap.tech.Gateway.dtos.*;
 import com.fiap.tech.Gateway.services.CartGatewayService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
@@ -18,7 +15,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.util.UUID;
@@ -34,7 +30,7 @@ public class CartGatewayController {
     }
 
     @GetMapping("/all-items/{id}")
-    public ResponseEntity<Flux<CartAddResponseDTO>> getAllItemsOnCart(@PathVariable UUID id){
+    public ResponseEntity<Mono<CartCompleteResponseDTO>> getAllItemsOnCart(@PathVariable UUID id){
         return ResponseEntity.status(HttpStatus.OK).body(cartGatewayService.getAllItemsOnCart(id));
     }
 
@@ -44,7 +40,7 @@ public class CartGatewayController {
 
         Algorithm algorithm = Algorithm.HMAC256("baeldung");
         JWTVerifier verifier = JWT.require(algorithm)
-                .withIssuer("Baeldung") // TODO: Token certo aqui
+                .withIssuer("Baeldung")
                 .build();
 
         DecodedJWT decodedJWT = null;
@@ -68,5 +64,15 @@ public class CartGatewayController {
         responseBody.put("message", "Item successfully added");
 
         return ResponseEntity.status(HttpStatus.CREATED).body(cartAddResponse);
+    }
+
+    @DeleteMapping(path = "/remove-item-cart/{idCart}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Mono<String>> removeItemCartList(@PathVariable UUID idCart, @RequestParam UUID idProduct){
+        return ResponseEntity.status(HttpStatus.OK).body(cartGatewayService.removeItemCart(idCart, idProduct));
+    }
+
+    @DeleteMapping(path = "/delete-cart-items/{idCart}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Mono<String>> removeAllItemsCart(@PathVariable UUID idCart){
+        return ResponseEntity.status(HttpStatus.OK).body(cartGatewayService.removeAllItemsCart(idCart));
     }
 }

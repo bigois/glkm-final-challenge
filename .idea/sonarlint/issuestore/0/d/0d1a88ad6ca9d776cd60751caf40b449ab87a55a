@@ -1,0 +1,7 @@
+
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(· Œ†úÿÿÿÿ
+
+java:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(š¼ßÏ8‡½»Áæ1
+N
+java:S1068
+"1Remove this unused "paymentClient" private field.(¬‰öÚ8Ş¹Áæ1

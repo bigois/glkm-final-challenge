@@ -7,7 +7,9 @@ import br.com.fiap.paymentapi.infrastructure.dto.request.AccountMovimentRequest;
 import br.com.fiap.paymentapi.infrastructure.dto.request.AccountRequest;
 import br.com.fiap.paymentapi.infrastructure.mapper.impl.AccountMapperImpl;
 import br.com.fiap.paymentapi.port.in.AccountInput;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -21,31 +23,25 @@ public class AccountService implements AccountInput {
     private final AccountMapperImpl mapper;
 
     @Override
-    public ResponseEntity<?> create(AccountRequest request) {
-
+    public Account create(AccountRequest request) {
         if (isAccountCreated(request.getAccountNumber())) {
-            throw new RuntimeException("Account already registred!");
+            throw new DataIntegrityViolationException("account already registered!");
         }
+
         Account account = mapper.requestToModel(request);
 //        account.setAccountOwnerName(request.getAccountOwner().getName());
-        return ResponseEntity.ok().body(repository.save(account));
-
+        return repository.save(account);
     }
 
     @Override
-    public ResponseEntity<?> findByAccount(String accountNumber) {
-
-        Account accountByAccountNumber = repository.findAccountByAccountNumber(accountNumber)
-                .orElseThrow(() -> new AccountNotFoundException("Account number: '" + accountNumber + "' Not found!")
-                );
-
-        return ResponseEntity.ok().body(accountByAccountNumber);
+    public Account findByAccount(String accountNumber) {
+        return repository.findAccountByAccountNumber(accountNumber).orElseThrow(() -> new AccountNotFoundException("Account number: '" + accountNumber + "' Not found!"));
     }
 
     @Override
     public Account findByAccountAndAgency(String account, String agency) {
         return repository.findAccountByAccountNumberAndAgency(account, agency)
-                .orElseThrow(() -> new RuntimeException("Account not found!")
+                .orElseThrow(() -> new EntityNotFoundException("Account not found!")
                 );
     }
 
@@ -61,7 +57,7 @@ public class AccountService implements AccountInput {
     public void withdraw(AccountMovimentRequest request) {
         Account acc = findByAccountAndAgency(request.getAccountNumber(), request.getAccountAgency());
         if (!hasBalance(request.getAmmount(), acc.getBalance())) {
-            throw new RuntimeException("Not enough balance to withdraw.");
+            throw new RuntimeException("not enough balance to withdraw.");
         }
 
         acc.setBalance(acc.getBalance().subtract(request.getAmmount()));

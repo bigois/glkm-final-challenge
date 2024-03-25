@@ -1,17 +1,18 @@
 
-g	java:S112!"FDefine and throw a dedicated exception instead of using a generic one.(ÿÕïäøÿÿÿÿ8àµÛËå1
-g	java:S112$"FDefine and throw a dedicated exception instead of using a generic one.(îš†İúÿÿÿÿ8áµÛËå1
-g	java:S112."FDefine and throw a dedicated exception instead of using a generic one.(½´¶¬ûÿÿÿÿ8áµÛËå1
-g	java:S1121"FDefine and throw a dedicated exception instead of using a generic one.(ûÄ±Şüÿÿÿÿ8áµÛËå1
-g	java:S1123"FDefine and throw a dedicated exception instead of using a generic one.(îš†İúÿÿÿÿ8áµÛËå1
-g	java:S112D"FDefine and throw a dedicated exception instead of using a generic one.(½´¶¬ûÿÿÿÿ8âµÛËå1
-g	java:S112G"FDefine and throw a dedicated exception instead of using a generic one.(÷‘Í®üÿÿÿÿ8âµÛËå1
-b	java:S112P"FDefine and throw a dedicated exception instead of using a generic one.(ÈÉ…é8âµÛËå1
-g	java:S112\"FDefine and throw a dedicated exception instead of using a generic one.(èÏ³Áùÿÿÿÿ8âµÛËå1
-b	java:S112]"FDefine and throw a dedicated exception instead of using a generic one.(µ„ßĞ8âµÛËå1
+g	java:S112""FDefine and throw a dedicated exception instead of using a generic one.(ÿÕïäøÿÿÿÿ8­œîç1
+g	java:S112%"FDefine and throw a dedicated exception instead of using a generic one.(îš†İúÿÿÿÿ8­œîç1
+g	java:S112/"FDefine and throw a dedicated exception instead of using a generic one.(½´¶¬ûÿÿÿÿ8­œîç1
+g	java:S1122"FDefine and throw a dedicated exception instead of using a generic one.(ûÄ±Şüÿÿÿÿ8®œîç1
+g	java:S1124"FDefine and throw a dedicated exception instead of using a generic one.(îš†İúÿÿÿÿ8®œîç1
+g	java:S112E"FDefine and throw a dedicated exception instead of using a generic one.(½´¶¬ûÿÿÿÿ8®œîç1
+g	java:S112H"FDefine and throw a dedicated exception instead of using a generic one.(÷‘Í®üÿÿÿÿ8®œîç1
+b	java:S112Q"FDefine and throw a dedicated exception instead of using a generic one.(ÈÉ…é8¯œîç1
+g	java:S112]"FDefine and throw a dedicated exception instead of using a generic one.(èÏ³Áùÿÿÿÿ8¯œîç1
+b	java:S112^"FDefine and throw a dedicated exception instead of using a generic one.(µ„ßĞ8¯œîç1
 
-java:S1192$"]Define a constant instead of duplicating this literal "quantity must be more than 0" 4 times.(îš†İúÿÿÿÿ8ãµÛËå1
-v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ğ³ı”8æµÛËå1
+java:S1192%"]Define a constant instead of duplicating this literal "quantity must be more than 0" 4 times.(îš†İúÿÿÿÿ8±œîç1
+r
+java:S1192/"PDefine a constant instead of duplicating this literal "cart not exists" 3 times.(½´¶¬ûÿÿÿÿ8±œîç1
+v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ğ³ı”8³œîç1
 _
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8†¶ÛËå1
-X	java:S125d"<This block of commented-out lines of code should be removed.(Ø«—ø8š¶ÛËå1
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8Ôœîç1

@@ -9,5 +9,7 @@ X
 java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ
 X
 java:S6813""BRemove this field injection and use constructor injection instead.(êæÄŞ
+G
+java:S1128"*Remove this unused import 'lombok.Getter'.(ùÒµÙ8Ş´—ç1
 E
 java:S1068"*Remove this unused "logger" private field.(¹ÅËşÿÿÿÿ

@@ -1,2 +1,7 @@
 
-v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(®ºÀ¨8ÓéëËå1
+v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(®ºÀ¨8Ğ¹Òç1
+j
+java:S22595"HA "NullPointerException" could be thrown; "decodedJWT" is nullable here.(ªõÎ¨ıÿÿÿÿ8¼àµ½ç1
+S
+java:S6437)"6Revoke and change this password, as it is compromised.(–©úŒ8İàµ½ç1
+L	java:S1062"+Replace this use of System.out by a logger.(©şêÜúÿÿÿÿ8½Í²½ç1
