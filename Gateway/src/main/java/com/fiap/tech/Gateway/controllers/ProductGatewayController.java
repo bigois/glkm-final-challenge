@@ -1,18 +1,17 @@
 package com.fiap.tech.Gateway.controllers;
 
-import com.fiap.tech.Gateway.dtos.CartCreateRequestDTO;
-import com.fiap.tech.Gateway.dtos.CartCreateResponseDTO;
-import com.fiap.tech.Gateway.dtos.ProductResponseDTO;
+import com.fiap.tech.Gateway.dtos.*;
 import com.fiap.tech.Gateway.services.CartGatewayService;
 import com.fiap.tech.Gateway.services.ProductGatewayService;
 import jakarta.validation.Valid;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 
-import com.fiap.tech.Gateway.dtos.ProductListResponseDTO;
 import reactor.core.publisher.Mono;
 
 import java.util.UUID;
@@ -38,19 +37,18 @@ public class ProductGatewayController {
         return ResponseEntity.status(HttpStatus.OK).body(productGatewayService.getProductById(id));
     }
 
-    /*
     @PostMapping
-    public ResponseEntity<String> purchaseProduct(){
-        return null;
+    public ResponseEntity<Mono<ProductCreateResponseDTO>> createProduct(@Valid @RequestBody ProductCreateRequestDTO productCreateRequestDTO){
+        return ResponseEntity.status(HttpStatus.CREATED).body(productGatewayService.createProduct(productCreateRequestDTO));
     }
 
-    @PostMapping
-    public ResponseEntity<String> addProductToCart(){
-        return null;
+    @PutMapping("/stock/add-stock-quantity/{id}")
+    public ResponseEntity<Mono<String>> addQuantityStock(@PathVariable UUID id, @RequestParam String quantity) {
+        return ResponseEntity.status(HttpStatus.OK).body(productGatewayService.addQuantityStock(id, quantity));
     }
 
-    @PostMapping
-    public ResponseEntity<String> purchaseCart(){
-        return null;
-    }*/
+    @PutMapping("/stock/remove-stock-quantity/{id}")
+    public ResponseEntity<Mono<String>> removeQuantityStock(@PathVariable UUID id, @RequestParam String quantity) {
+        return ResponseEntity.status(HttpStatus.OK).body(productGatewayService.removeQuantityStock(id, quantity));
+    }
 }

@@ -1,4 +1,6 @@
 
+e
+java:S11924"IDefine a constant instead of duplicating this literal "quantity" 4 times.(æŞ´;8Ò¹ŞÁç1
 g
-java:S1192&"JDefine a constant instead of duplicating this literal "idProduct" 3 times.(œ¤ƒ¦8ü×¤ç1
-{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ûíãÑşÿÿÿÿ8‹‡Ò—æ1
+java:S11922"JDefine a constant instead of duplicating this literal "idProduct" 5 times.(œ¤ƒ¦8Ó¹ŞÁç1
+{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ûíãÑşÿÿÿÿ8Ö¹ŞÁç1

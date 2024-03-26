@@ -3,10 +3,13 @@ package com.fiap.tech.Cart.services;
 import com.fiap.tech.Cart.entities.CartList;
 import com.fiap.tech.Cart.mappers.CartListMapper;
 import com.fiap.tech.Cart.repositories.CartListRepository;
+import com.fiap.tech.Cart.utils.VerifyIdUser;
 import jakarta.persistence.EntityNotFoundException;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import reactor.core.publisher.Mono;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -17,6 +20,9 @@ public class CartListService {
 
     @Autowired
     private CartListRepository cartListRepository;
+
+    @Autowired
+    private VerifyIdUser verifyIdUser;
 
     @Transactional(readOnly = true)
     public CartList getByCartId(UUID id){
@@ -31,7 +37,7 @@ public class CartListService {
     @Transactional
     public CartList createCartList(UUID idCart, UUID idProduct, BigDecimal price, int quantity){
         if(cartListRepository.existsByIdCart(idCart)){
-            throw new RuntimeException("cart list already exists");
+            return addItemCartList(idCart, idProduct, price, quantity);
         }
 
         if(quantity <= 0) throw new RuntimeException("quantity must be more than 0");
@@ -44,10 +50,10 @@ public class CartListService {
         boolean cartList = cartListRepository.existsByIdCart(idCart);
 
         if(!cartList){
-            throw new RuntimeException("cart not exists");
+            throw new EntityNotFoundException("cart not exists");
         }
 
-        if(cartListRepository.existsByIdProduct(idProduct)) throw new RuntimeException("product already exists in Cart List");
+        if(cartListRepository.existsByIdProduct(idProduct)) throw new DataIntegrityViolationException("product already exists in Cart List");
 
         if(quantity <= 0) throw new RuntimeException("quantity must be more than 0");
 
@@ -66,10 +72,10 @@ public class CartListService {
         CartList cartList = cartListRepository.findByIdCartAndIdProduct(idCart, idProduct);
 
         if(cartList == null) {
-            throw new RuntimeException("cart not exists");
+            throw new EntityNotFoundException("cart not exists");
         }
 
-        if(!cartListRepository.existsByIdProduct(idProduct)) throw new RuntimeException("product not exists in this cart");
+        if(!cartListRepository.existsByIdProduct(idProduct)) throw new EntityNotFoundException("product not exists in this cart");
 
         cartListRepository.deleteByIdCartAndIdProduct(idCart, idProduct);
     }

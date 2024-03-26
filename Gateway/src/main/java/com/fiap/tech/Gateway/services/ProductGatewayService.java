@@ -1,33 +1,28 @@
 package com.fiap.tech.Gateway.services;
 
+import com.fiap.tech.Gateway.dtos.*;
 import com.fiap.tech.Gateway.utils.ProductUtil;
-import com.google.gson.Gson;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-import com.fiap.tech.Gateway.dtos.ProductListResponseDTO;
-import java.math.BigDecimal;
-import org.springframework.http.HttpHeaders;
 
 import java.util.UUID;
-import java.util.concurrent.ExecutionException;
 
-import com.fiap.tech.Gateway.dtos.ProductResponseDTO;
-import com.fiap.tech.Gateway.dtos.StockResponseDTO;
 @Service
 public class ProductGatewayService {
     private ProductUtil productUtil;
     private final WebClient productClient;
+    private final WebClient stockClient;
 
     private static final String API_AUTHENTICATE = "http://localhost:8089/auth";
 
     public ProductGatewayService(WebClient.Builder webClientBuilder, ProductUtil productUtil) {
         this.productClient = webClientBuilder.baseUrl("http://localhost:8081").build();
+        this.stockClient = webClientBuilder.baseUrl("http://localhost:8082").build();
         this.productUtil = productUtil;
     }
 
@@ -54,6 +49,35 @@ public class ProductGatewayService {
                                     return productUtil.combineProductAndAdditionalData(productData, stockData);
                                 });
                     });
+    }
+
+    public Mono<ProductCreateResponseDTO> createProduct(ProductCreateRequestDTO productCreateRequestDTO){
+        return productClient.post()
+                .uri("/products")
+                .contentType(MediaType.APPLICATION_JSON)
+                .body(BodyInserters.fromValue(productCreateRequestDTO))
+                .retrieve()
+                .bodyToMono(ProductCreateResponseDTO.class);
+    }
+
+    public Mono<String> addQuantityStock(UUID id, String quantity){
+        return stockClient.put()
+                .uri(builder -> builder
+                        .path("/stocks/add-stock-quantity/" + id)
+                        .queryParam("quantity", quantity)
+                        .build())
+                .retrieve()
+                .bodyToMono(String.class);
+    }
+
+    public Mono<String> removeQuantityStock(UUID id, String quantity){
+        return stockClient.put()
+                .uri(builder -> builder
+                        .path("/stocks/remove-stock-quantity/" + id)
+                        .queryParam("quantity", quantity)
+                        .build())
+                .retrieve()
+                .bodyToMono(String.class);
     }
 
     public Boolean authenticate(String token)  {

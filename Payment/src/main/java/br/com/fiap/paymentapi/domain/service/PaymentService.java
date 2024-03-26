@@ -28,7 +28,7 @@ public class PaymentService implements PaymentInput {
 
         if (!accountService.hasBalance(request.getAmmount(),
                 originAcc.getBalance())) {
-            throw new RuntimeException("Not enough balance to make this transaction!");
+            throw new IllegalArgumentException("Not enough balance to make this transaction!");
         }
 
         originAcc.setBalance(originAcc.getBalance().subtract(request.getAmmount()));

@@ -1,8 +1,2 @@
 
-{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ûíãÑşÿÿÿÿ8çåÌÈå1
-N
-java:S1128"1Remove this unused import 'com.google.gson.Gson'.(–§8Í·ĞÈå1
-N
-java:S1128"1Remove this unused import 'java.math.BigDecimal'.(êêŠ8Î·ĞÈå1
-a
-java:S1128"DRemove this unused import 'java.util.concurrent.ExecutionException'.(¡£ØÍ8Î·ĞÈå1
+{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ûíãÑşÿÿÿÿ8æñ‹¿ç1
