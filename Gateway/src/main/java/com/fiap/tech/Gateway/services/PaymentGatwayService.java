@@ -52,9 +52,18 @@ public class PaymentGatwayService {
                 });
     }
 
-    public Mono<PaymentResponseDTO> paymentCart(UUID id, PaymentRequestDTO paymentRequestDTO) {
+    public Mono<String> accountDeposit(AccountDepositRequestDTO accountDepositRequestDTO){
+        return paymentClient.post()
+                .uri("/accounts/deposit/")
+                .contentType(MediaType.APPLICATION_JSON)
+                .body(BodyInserters.fromValue(accountDepositRequestDTO))
+                .retrieve()
+                .bodyToMono(String.class);
+    }
+
+    public Mono<PaymentResponseDTO> paymentCart(UUID id, PaymentRequestDTO paymentRequestDTO, String token) {
         Mono<AccountResponseDTO> accountResponse = getMainAccount();
-        Mono<CartCompleteResponseDTO> cartComplete = cartGatewayService.getAllItemsOnCart(id);
+        Mono<CartCompleteResponseDTO> cartComplete = cartGatewayService.getAllItemsOnCart(id, token);
 
         if(cartComplete == null){
             throw new EntityNotFoundException("no items found on cart");
@@ -75,6 +84,12 @@ public class PaymentGatwayService {
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(BodyInserters.fromValue(paymentFormatterRequestDTO))
                 .retrieve()
-                .bodyToMono(PaymentResponseDTO.class);
+                .bodyToMono(PaymentResponseDTO.class)
+                .flatMap(response -> {
+                    if (response.transaction_id() != 0) {
+                        return cartGatewayService.removeAllItemsCart(id).thenReturn(response);
+                    }
+                    return Mono.just(response);
+                });
     }
 }

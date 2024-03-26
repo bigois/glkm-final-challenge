@@ -9,5 +9,4 @@ public class TechChallenge5AuthenticateLoginApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(TechChallenge5AuthenticateLoginApplication.class, args);
 	}
-
 }

@@ -32,7 +32,7 @@ public class StockController {
         return ResponseEntity.status(HttpStatus.CREATED).body(stock);
     }
 
-    @PutMapping("/add-stock-quantity/{id}")
+    @PutMapping(path = "/add-stock-quantity/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<String> addQuantityStock(@PathVariable UUID id, @RequestParam String quantity) throws JSONException {
         stockService.addQuantityStock(id, quantity);
 
@@ -41,7 +41,7 @@ public class StockController {
         return ResponseEntity.status(HttpStatus.OK).body(responseBody.toString());
     }
 
-    @PutMapping("/remove-stock-quantity/{id}")
+    @PutMapping(path = "/remove-stock-quantity/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<String> removeQuantityStock(@PathVariable UUID id, @RequestParam String quantity) throws JSONException {
         stockService.removeQuantityStock(id, quantity);
 

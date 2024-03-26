@@ -1,7 +1,5 @@
 package com.fiap.tech.Cart.mappers;
 
-import com.fiap.tech.Cart.dtos.CartListRequestDTO;
-import com.fiap.tech.Cart.dtos.CartListResponseDTO;
 import com.fiap.tech.Cart.entities.CartList;
 
 import java.math.BigDecimal;

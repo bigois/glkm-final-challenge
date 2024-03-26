@@ -1,0 +1,8 @@
+
+j
+java:S11921"HDefine a constant instead of duplicating this literal "message" 4 times.(úõ«µùÿÿÿÿ8¤Ş•Âç1
+l
+java:S1192%"JDefine a constant instead of duplicating this literal "timestamp" 5 times.(âÛÇ…úÿÿÿÿ8¥Ş•Âç1
+{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Ÿ¸áÙÿÿÿÿÿ8§Ş•Âç1
+U
+java:S1611"3Remove the parentheses around the "error" parameter(ı£—Ôúÿÿÿÿ8ÉŞ•Âç1
