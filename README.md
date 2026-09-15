@@ -67,6 +67,21 @@ The other modules use a more conventional layered architecture, primarily organi
 - JDK 17
 - Maven, to run every module
 - Docker and Docker Compose, to start MySQL
+- An `APP_SECRET` environment variable for the MySQL password and JWT signing secret
+
+Set it permanently for your Windows user:
+
+```powershell
+[Environment]::SetEnvironmentVariable("APP_SECRET", "your-strong-secret", "User")
+```
+
+Restart the terminal after setting it. For the current PowerShell session only:
+
+```powershell
+$env:APP_SECRET = "your-strong-secret"
+```
+
+The same value is used by MySQL and the authentication service. Choose a strong value and do not commit it to the repository.
 
 ### Database
 
@@ -116,7 +131,7 @@ The authentication service directly exposes `/auth` and `/users` on port 8089.
 ## Notes
 
 - `docker-compose.yaml` also contains a Cart container configuration based on generated artifacts in `out/`; the other services are not defined in that Compose file.
-- Database properties and a token secret are currently versioned in the modules. For use outside this study environment, move credentials and secrets to environment variables or a secrets manager.
+- Database passwords and the JWT signing secret are read from `APP_SECRET`. For production use, provide it through a secrets manager.
 - Services can be built and tested individually with `mvn test` from their respective directories.
 
 ## License

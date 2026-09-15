@@ -9,7 +9,7 @@ services:
     environment:
       - MYSQL_DATABASE=fiapsmart
       - MYSQL_USER=fiap
-      - MYSQL_PASSWORD=1234
-      - MYSQL_ROOT_PASSWORD=1234
+      - MYSQL_PASSWORD=${APP_SECRET:?APP_SECRET must be set}
+      - MYSQL_ROOT_PASSWORD=${APP_SECRET:?APP_SECRET must be set}
 volumes:
   mysql_volum_fiapsmart:
